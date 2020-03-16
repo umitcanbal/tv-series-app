@@ -2,26 +2,33 @@ import React, { Component } from 'react';
 import './App.css';
 import Intro from "../Intro"
 
-
 class App extends Component {
 
   state = {
     series: [],
   }
  
-  componentDidMount() {
-    const series = ["Vikings", "Game of Thrones"];
-
-    setTimeout( () => {
-      this.setState( {
-        series: series
-        // böyle olunca property/key olan "series"i variable olan "series"e eşitliyo direkt, isimler aynı olduğu için
-      } );
-    }, 
-    2000);
+  componentDidMount = () => {
+    fetch("http://api.tvmaze.com/search/shows?q=Vikings")
+      .then( (responsee) => { return (responsee.json()) } )
+      .then( myJson => this.setState( { series: myJson } ) ); 
+    
   }
+  
+  // componentDidMount = async () => {
+  //   const url = new URL ("http://api.tvmaze.com/search/shows?q=Vikings");
+  //   console.log("url", url);
+  //   const response = await fetch(url);
+  //   console.log("response", response);
+  //   const json = await response.json();
+  //   console.log("json", json);
+  //   this.setState( { series: json } )
+  // }
+
+  //Yukarıdaki fetching için ikinci bi seçenek
 
   render() {
+    console.log(this.state.series);
     return (
       <div className="App">
         <header className="App-header">
@@ -33,27 +40,5 @@ class App extends Component {
     );
   }
 }
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
