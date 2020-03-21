@@ -19,11 +19,16 @@ class Series extends React.Component {
       } ) })
   }
 
+  doo = () => {
+    console.log("bi tuşa tıkladın")
+  }
+
   render() {
     return(
       <div>
         The length of series array - {this.state.series.length}
         <SeriesList list={this.state.series} />
+        <input onChange={this.doo}/>
       </div>
     )
   }
