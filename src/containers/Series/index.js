@@ -1,5 +1,7 @@
 import React from "react";
 
+import SeriesList from "../../components/SeriesList";
+
 class Series extends React.Component {
   constructor(props) {
     super(props);
@@ -15,16 +17,13 @@ class Series extends React.Component {
       .then ( (series) => { this.setState( {
         series: series,
       } ) })
-    
-    setTimeout( () => this.props.calculateLength(this.state.series), 1000 );
-
   }
 
   render() {
-    
     return(
       <div>
-        Series Container
+        The length of series array - {this.state.series.length}
+        <SeriesList list={this.state.series} />
       </div>
     )
   }
