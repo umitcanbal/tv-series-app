@@ -1,6 +1,7 @@
 import React from "react";
 
 import SeriesList from "../../components/SeriesList";
+import MySpinner from "../../components/Spinner";
 
 class Series extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Series extends React.Component {
         {
           inputFieldValue !== "" && isFetching 
           &&
-          <p>Loading......!!!!</p>
+          <MySpinner />
         }
         {
           inputFieldValue !== "" && !isFetching 
