@@ -11,16 +11,12 @@ class Series extends React.Component {
     }
   }
 
-  componentDidMount() {
-    fetch("http://api.tvmaze.com/search/shows?q=Vikings")
+  onSeriesInputChange = (event) => {
+    fetch(`http://api.tvmaze.com/search/shows?q=${event.target.value}`)
       .then( (response) => { return( response.json()) })
       .then ( (series) => { this.setState( {
         series: series,
       } ) })
-  }
-
-  doo = (event) => {
-    console.log(event.target.value);
   }
 
   render() {
@@ -28,7 +24,7 @@ class Series extends React.Component {
       <div>
         The length of series array - {this.state.series.length}
         <SeriesList list={this.state.series} />
-        <input onChange={this.doo}/>
+        <input onChange={this.onSeriesInputChange}/>
       </div>
     )
   }
