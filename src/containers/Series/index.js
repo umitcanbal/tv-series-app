@@ -19,8 +19,8 @@ class Series extends React.Component {
       } ) })
   }
 
-  doo = () => {
-    console.log("bi tuşa tıkladın")
+  doo = (event) => {
+    console.log(event.target.value);
   }
 
   render() {
