@@ -1,16 +1,28 @@
 import React from "react";
 import "./index.css";
 
-const SeriesList = (props) => {
+
+const SeriesListItem = (props) => {
+  
+  const { name } = props.singleListItem.show;
 
   return (
+    <li className="list-items">
+      { name }
+    </li>
+  )
+}
 
+const SeriesList = (props) => {
+  
+  return (
     <ul>
       {props.list.map( (singleListItem) => 
       {
-        const {id, name} = singleListItem.show;
+        const { id } = singleListItem.show;
+        
         return (
-        <li key={id} className="list-items">{name}</li>
+          <SeriesListItem singleListItem={singleListItem} key={id}/>
         )
       } 
       )}
