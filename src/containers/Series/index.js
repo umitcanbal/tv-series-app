@@ -15,6 +15,7 @@ class Series extends React.Component {
 
   onSeriesInputChange = (event) => {
     this.setState( { inputFieldValue: event.target.value, isFetching: true } )
+
     fetch(`http://api.tvmaze.com/search/shows?q=${event.target.value}`)
       .then( (response) => { return( response.json()) })
       .then ( (series) => { this.setState( {
@@ -24,35 +25,36 @@ class Series extends React.Component {
   }
 
   render() {
+    const { inputFieldValue, isFetching, series } = this.state;
 
     return(
       <div>
         <div>
           <input 
             type="text"
-            value={this.state.inputFieldValue}
+            value={inputFieldValue}
             onChange={this.onSeriesInputChange}
           />
         </div>
         {
-          this.state.inputFieldValue === "" && !this.state.isFetching
+          inputFieldValue === "" && !isFetching
           &&
           <p>İzlemek istediğiniz filmin adını yukarıdaki kutucuğa yazınız.</p>
         }
         {
-          this.state.inputFieldValue !== "" && this.state.series.length === 0 && !this.state.isFetching
+          inputFieldValue !== "" && series.length === 0 && !isFetching
           &&
           <p>Aradığınız isimde bir film yok, ismi değiştirip tekrar deneyiniz</p>
         }
         {
-          this.state.inputFieldValue !== "" && this.state.isFetching 
+          inputFieldValue !== "" && isFetching 
           &&
           <p>Loading......!!!!</p>
         }
         {
-          this.state.inputFieldValue !== "" && !this.state.isFetching 
+          inputFieldValue !== "" && !isFetching 
           &&
-          <SeriesList list={this.state.series} />
+          <SeriesList list={series} />
         }
       </div>
     )
