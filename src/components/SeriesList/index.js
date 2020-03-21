@@ -10,7 +10,7 @@ const SeriesList = (props) => {
       {
         const {id, name} = singleListItem.show;
         return (
-        <li key={id}>{name}</li>
+        <li key={id} className="list-items">{name}</li>
         )
       } 
       )}
