@@ -35,12 +35,12 @@ class Series extends React.Component {
           />
         </div>
         {
-          this.state.inputFieldValue === "" 
+          this.state.inputFieldValue === "" && !this.state.isFetching
           &&
           <p>İzlemek istediğiniz filmin adını yukarıdaki kutucuğa yazınız.</p>
         }
         {
-          this.state.inputFieldValue !== "" && this.state.series.length === 0 
+          this.state.inputFieldValue !== "" && this.state.series.length === 0 && !this.state.isFetching
           &&
           <p>Aradığınız isimde bir film yok, ismi değiştirip tekrar deneyiniz</p>
         }
