@@ -5,15 +5,19 @@ import Series from "../../containers/Series"
 
 class App extends Component {
 
-  state = {
-    series: [],
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      series: []
+    }
   }
- 
-  componentDidMount = () => {
-    fetch("http://api.tvmaze.com/search/shows?q=Vikings")
-      .then( (responsee) => { return (responsee.json()) } )
-      .then( myJson => this.setState( { series: myJson } ) ); 
-    
+
+  calculateLength = (array) => {
+    console.log("fonksiyonun adıı calculateLeeength", array);
+    this.setState( {
+      series: array,
+    } );
   }
 
   render() {
@@ -25,7 +29,8 @@ class App extends Component {
         </header>
         <Intro message="Here you can find all of your most loved series"/>
           The length of series array - {this.state.series.length}
-          <Series />
+          
+          <Series calculateLength={this.calculateLength} />
       </div>
     );
   }
