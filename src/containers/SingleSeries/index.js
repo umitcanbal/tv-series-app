@@ -10,6 +10,3 @@ export default class SingleSeries extends React.Component {
     )
   }
 }
-
-// Buradaki this.props objesini iyi incele. 
-// Şu an Main'de belirttiğim path'i browsera elimle yazınca, bu komponenti renderlayabiliyorum ve browserda görüntüleyebiliyorum.
