@@ -1,14 +1,16 @@
 import React from "react";
 import "./index.css";
-
+import { Link } from "react-router-dom";
 
 const SeriesListItem = (props) => {
   
-  const { name } = props.singleListItem.show;
-
+  const { name, id } = props.singleListItem.show;
+  
   return (
     <li className="list-items">
-      { name }
+      <Link to={`/series/${id}`}>
+        {name}
+      </Link>
     </li>
   )
 }
