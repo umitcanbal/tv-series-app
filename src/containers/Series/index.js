@@ -1,5 +1,7 @@
 import React from "react";
 
+import Intro from "../../components/Intro";
+
 import SeriesList from "../../components/SeriesList";
 import MySpinner from "../../components/Spinner";
 
@@ -30,6 +32,7 @@ class Series extends React.Component {
 
     return(
       <div>
+        <Intro message="Here you can find all of your most loved series"/>
         <div>
           <input 
             type="text"
